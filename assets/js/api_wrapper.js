@@ -16,6 +16,7 @@ function get_data(datatype, start_date, end_date, callback) {
     if (datatype == "panels"
         || datatype == "sensors"
         || datatype == "settings"
+        || datatype == "tiles"
         || datatype == "sample") {
        url += datatype;
         if(start_date) {

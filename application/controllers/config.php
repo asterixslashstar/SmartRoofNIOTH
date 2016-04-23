@@ -32,8 +32,8 @@ class Config extends CI_Controller
             $crud->set_theme('datatables');
             $crud->set_table('sensors');
             $crud->set_subject('sensors');
-            $crud->required_fields('sensor_name', 'reg_date');
-            $crud->columns('sensor_name', 'reg_date');
+            $crud->required_fields('sensor_name', 'reg_date', 'thermal', 'visual', 'tactile');
+            $crud->columns('sensor_name', 'reg_date', 'thermal', 'visual', 'tactile');
 
             $output = $crud->render();
 
