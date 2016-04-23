@@ -1,88 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<style type="text/css">
 
-	::selection{ background-color: #E13300; color: white; }
-	::moz-selection{ background-color: #E13300; color: white; }
-	::webkit-selection{ background-color: #E13300; color: white; }
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/favicon.ico">
+    <!--TODO - add our own favicon !-->
 
-	body {
-		background-color: #fff;
-		margin: 40px;
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
+    <title>Smart roof smart viewer</title>
 
-	a {
-		color: #003399;
-		background-color: transparent;
-		font-weight: normal;
-	}
+    <!-- Bootstrap core CSS -->
+    <link href="assets/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
 
-	h1 {
-		color: #444;
-		background-color: transparent;
-		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
-		font-weight: normal;
-		margin: 0 0 14px 0;
-		padding: 14px 15px 10px 15px;
-	}
+    <!-- Custom styles for this template -->
+    <link href="assets/pretty_client/cover.css" rel="stylesheet">
 
-	code {
-		font-family: Consolas, Monaco, Courier New, Courier, monospace;
-		font-size: 12px;
-		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
-	}
+    <link href="assets/pretty_client/smartroof.css" rel="stylesheet">
 
-	#body{
-		margin: 0 15px 0 15px;
-	}
-	
-	p.footer{
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-	
-	#container{
-		margin: 10px;
-		border: 1px solid #D0D0D0;
-		-webkit-box-shadow: 0 0 8px #D0D0D0;
-	}
-	</style>
-</head>
-<body>
+  </head>
 
-<div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+  <body>
 
-	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+    <div class="site-wrapper">
 
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
+      <div class="site-wrapper-inner">
 
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/welcome.php</code>
+        <div class="cover-container">
 
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-	</div>
+            <div class="inner">
+              <h3 class="masthead-brand">Smart Roof UI</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="analytics.html">Advanced analytics</a></li>
+                </ul>
+              </nav>
+            </div>
 
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
-</div>
+          <div class="inner cover">
+            <h1 class="cover-heading">See how your smart patio performs!</h1>
+            <p class="lead">Take a closer look at the micro climate conditions in the structure, sensed data and </p>
+              <div class="planViewContainer"></div>
+          </div>
+            <p class="lead">
+                <a href="#" class="btn btn-lg btn-default">Learn more</a>
+            </p>
+            <div class="inner">
+              <p>NIOT Hackathon 2016 <a href="#">#SmartRoof</a></p>
+            </div>
 
-</body>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/jquery/jquery-2.2.3.min.js"></script>
+    <script src="assets/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <script src="assets/d3/d3.js" charset="utf-8"></script>
+    <script src="assets/d3/d3tip.js" charset="utf-8"></script>
+
+    <script src="assets/pretty_client/smartroof.js"></script>
+    <script src="assets/pretty_client/sensors.js"></script>
+    <script src="assets/pretty_client/panels.js"></script>
+  </body>
 </html>

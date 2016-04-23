@@ -1,0 +1,25 @@
+{
+  "radius": 7,
+  "sensors": [
+    {
+      "x_cord": "7",
+      "y_cord": "8",
+      "element_type": "1"
+    },
+    {
+      "x_cord": "4",
+      "y_cord": "2",
+      "element_type": "2"
+    },
+    {
+      "x_cord": "7",
+      "y_cord": "4",
+      "element_type": "2"
+    },
+    {
+      "x_cord": "10",
+      "y_cord": "10",
+      "element_type": "2"
+    }
+  ]
+}
