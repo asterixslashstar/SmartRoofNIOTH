@@ -23,7 +23,7 @@
                     <nav>
                         <ul class="nav masthead-nav">
                             <a href="/SmartRoofNIOTH/">Home</a> |
-                            <a href="/SmartRoofNIOTH/index.php/welcome/chart">Advanced</a> |
+                            <a href="/SmartRoofNIOTH/index.php/welcome/chart">Chart</a> |
                             <a href="/SmartRoofNIOTH/index.php/config/tile_management">Admin</a>
                         </ul>
                     </nav>
