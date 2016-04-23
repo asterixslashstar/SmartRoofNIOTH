@@ -23,7 +23,7 @@ class Welcome extends CI_Controller {
 
 	}
 
-	public function chart_test()
+	public function chart()
 	{
 		$this->load->view('chart_picker');
 	}

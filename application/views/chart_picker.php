@@ -1,28 +1,19 @@
-<script src="/SmartRoofNIOTH/assets/jquery/jquery-2.2.3.min.js" charset="utf-8"></script>
-<script src="/SmartRoofNIOTH/assets/d3/d3.min.js" charset="utf-8"></script>
-<script src="/SmartRoofNIOTH/assets/js/api_wrapper.js" charset="utf-8"></script>
-<script src="/SmartRoofNIOTH/assets/js/line_chart.js" charset="utf-8"></script>
+<?php $this->load->view('header'); ?>
+    <div class="inner cover">
+        <h1 class="cover-heading">Advanced</h1>
+            <form>
+                <label for="date" class="label">Start Date</label>
+                <input type="datetime" id="start-date">
 
-<form>
-    <label for="date" class="label">Start Date</label>
-    <input type="datetime" id="start-date">
+                <label for="date" class="label">End Date</label>
+                <input type="datetime" id="end-date">
 
-    <label for="date" class="label">End Date</label>
-    <input type="datetime" id="end-date">
+                <label for="set1" class="label">Panels</label>
+                <input type="radio" id="panels" name="dataset" value="panels" onclick="draw_chart()">
 
-    <label for="set1">Panels</label>
-    <input type="radio" id="panels" name="dataset" value="panels" onclick="draw_chart()">
-
-    <label for="set2">Sensors</label>
-    <input type="radio" id="dataset" name="dataset" value="sensors" onclick="draw_chart()">
-
-</form>
-
-<svg id="chart" class="chart"></svg>
-<?php
-/**
- * Created by PhpStorm.
- * User: asterixslashstar
- * Date: 4/23/2016
- * Time: 7:38 AM
- */
+                <label for="set2" class="label">Sensors</label>
+                <input type="radio" id="dataset" name="dataset" value="sensors" onclick="draw_chart()">
+            </form>
+</div>
+            <svg id="chart" class="chart"></svg>
+<?php $this->load->view('footer'); ?>
