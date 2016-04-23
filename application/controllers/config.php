@@ -54,8 +54,8 @@ class Config extends CI_Controller
             $crud->set_theme('datatables');
             $crud->set_table('tiles');
             $crud->set_subject('Tiles');
-            $crud->required_fields('x', 'y');
-            $crud->columns('x', 'y');
+            $crud->required_fields('title', 'x', 'y');
+            $crud->columns('title', 'x', 'y');
 
             $output = $crud->render();
 
