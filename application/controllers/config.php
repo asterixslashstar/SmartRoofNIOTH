@@ -31,9 +31,31 @@ class Config extends CI_Controller
 
             $crud->set_theme('datatables');
             $crud->set_table('sensors');
-            $crud->set_subject('sensors');
+            $crud->set_subject('Sensors');
+            $crud->set_relation('thermal', 'boolean', 'title');
+            $crud->set_relation('visual', 'boolean', 'title');
+            $crud->set_relation('tactile', 'boolean', 'title');
             $crud->required_fields('sensor_name', 'reg_date', 'thermal', 'visual', 'tactile');
             $crud->columns('sensor_name', 'reg_date', 'thermal', 'visual', 'tactile');
+
+            $output = $crud->render();
+
+            $this->_config_output($output);
+
+        }catch(Exception $e){
+            show_error($e->getMessage().' --- '.$e->getTraceAsString());
+        }
+    }
+    public function tile_management()
+    {
+        try{
+            $crud = new grocery_CRUD();
+
+            $crud->set_theme('datatables');
+            $crud->set_table('tiles');
+            $crud->set_subject('Tiles');
+            $crud->required_fields('x', 'y');
+            $crud->columns('x', 'y');
 
             $output = $crud->render();
 

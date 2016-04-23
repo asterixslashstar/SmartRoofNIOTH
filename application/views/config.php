@@ -31,6 +31,7 @@ a:hover
 	<div>
 		<a href='<?php echo site_url('config/sensor_management')?>'>Sensors</a> |
 		<a href='<?php echo site_url('config/panel_management')?>'>Panels</a> |
+		<a href='<?php echo site_url('config/tile_management')?>'>Tiles</a> |
 		<a href='<?php echo site_url('config/settings_management')?>'>Settings</a>
 		
 	</div>

@@ -4,11 +4,11 @@
 <script src="/SmartRoofNIOTH/assets/js/line_chart.js" charset="utf-8"></script>
 
 <form>
-    <label for="start-date" class="label">Start Date</label>
-    <input type="date" id="start-date">
+    <label for="date" class="label">Start Date</label>
+    <input type="datetime" id="start-date">
 
-    <label for="end-date" class="label">End Date</label>
-    <input type="date" id="end-date">
+    <label for="date" class="label">End Date</label>
+    <input type="datetime" id="end-date">
 
     <label for="set1">Panels</label>
     <input type="radio" id="panels" name="dataset" value="panels" onclick="draw_chart()">

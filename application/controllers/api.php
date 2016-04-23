@@ -36,6 +36,14 @@ class Api extends CI_Controller {
         $this->_send($this->_get_settings());
     }
 
+    public function tiles()
+    {
+        $this->load->database();
+        $query_string = 'select * from tiles;';
+        $query = $this->db->query($query_string.";");
+        $this->_send($query->result_array());
+    }
+
     private function _compare($a, $b)
     {
         return $b["x"] - $a["x"];
