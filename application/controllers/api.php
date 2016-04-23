@@ -36,6 +36,21 @@ class Api extends CI_Controller {
         $this->_send($this->_get_settings());
     }
 
+    private function _compare($a, $b)
+    {
+        return $b["x"] - $a["x"];
+    }
+
+    public function sample()
+    {
+        $to_return = array();
+        for($i = 1; $i < rand(10,100); $i++) {
+            $to_return[] = array("x"=>$i, "y"=>rand(1,1200));
+        }
+
+        $this->_send($to_return);
+    }
+
     private function _get_panels($start = null, $end = null)
     {
         $this->load->database();

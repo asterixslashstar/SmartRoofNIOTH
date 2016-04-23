@@ -15,7 +15,8 @@ function get_data(datatype, start_date, end_date, callback) {
     var url = endpoint;
     if (datatype == "panels"
         || datatype == "sensors"
-        || datatype == "settings") {
+        || datatype == "settings"
+        || datatype == "sample") {
        url += datatype;
         if(start_date) {
             url += "/" + start_date;
