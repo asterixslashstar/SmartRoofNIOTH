@@ -43,6 +43,9 @@ $route['404_override'] = '';
 $route['api'] = "api";
 $route['config'] = "config";
 
+$route['translate_uri_dashes'] = TRUE;
+
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
