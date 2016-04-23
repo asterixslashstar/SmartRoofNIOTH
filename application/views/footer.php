@@ -1,4 +1,7 @@
 </div>
+<div class="inner cover">
+    <p class="label">NIOT Hackathon 2016 <a href="#">#SmartRoof</a></p>
+</div>
 </div>
 </div>
 <link rel="stylesheet" href="/SmartRoofNIOTH/assets/css/cover.css">
