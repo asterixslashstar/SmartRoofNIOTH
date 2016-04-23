@@ -2,30 +2,88 @@
 
 class Api extends CI_Controller {
 
-	public function index()
-	{
-		$this->load->view('api_message');
-	}
-	
-
-    public function panels()
+    public function __construct()
     {
+        parent::__construct();
         header('content-type: application/json; charset=utf-8');
 
-        $json = json_encode($this->_get_panels());
+    }
 
+    private function _send($data)
+    {
+        $json = json_encode($data);
         echo isset($_GET['callback'])
             ? "{$_GET['callback']}($json)"
             : $json;
+    }
+	
+    /* takes date values as mysql timestamp integers
+    eg. 20061124092345 */
+    public function panels($start = null, $end = null)
+    {
+        $this->_send($this->_get_panels((float) $start, (float) $end));
+    }
+
+    /* takes date values as mysql timestamp integers
+    eg. 20061124092345*/
+    public function sensors($start = null, $end = null)
+    {
+        $this->_send($this->_get_sensors((float) $start, (float) $end));
+    }
+
+    public function settings()
+    {
+        $this->_send($this->_get_settings());
     }
 
     private function _get_panels($start = null, $end = null)
     {
         $this->load->database();
-        $query = $this->db->query('select * from panels');
+        $query_string = 'select * from panels';
+
+        if($start || $end) {
+            $query_string .= " where ";
+            if($start) {
+                $query_string .= " installed_date >= " . $start;
+            }
+            if($end) {
+                if($start) {
+                    $query_string .= " AND ";
+                }
+                $query_string .= " installed_date <= " . $end;
+            }
+        }
+        $query = $this->db->query($query_string.";");
         return $query->result_array();
     }
-	
+
+    private function _get_sensors($start = null, $end = null)
+    {
+        $this->load->database();
+        $query_string = 'select * from sensors';
+
+        if($start || $end) {
+            $query_string .= " where ";
+            if($start) {
+                $query_string .= " reg_date >= " . $start;
+            }
+            if($end) {
+                if($start) {
+                    $query_string .= " AND ";
+                }
+                $query_string .= " reg_date <= " . $end;
+            }
+        }
+        $query = $this->db->query($query_string.";");
+        return $query->result_array();
+    }
+
+    private function _get_settings()
+    {
+        $this->load->database();
+        $query = $this->db->query('SELECT * FROM settings');
+        return $query->result_array();
+    }
 }
 
 /* End of file welcome.php */
