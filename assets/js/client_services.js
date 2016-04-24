@@ -5,13 +5,13 @@
 
 function update_utci(data) {
     var utci = document.getElementById("utci");
-    utci.innerHTML = data['shade'];
+    utci.innerHTML = parseFloat(data['shade']).toFixed(1);
 }
 
 
 function poll() {
     var endpoint = "http://localhost/SmartRoofNIOTH/index.php/environment/current";
-
+    var update = "http://localhost/SmartRoofNIOTH/index.php/environment/update";
     $.ajax({
         url: endpoint,
         type: "GET",
@@ -20,7 +20,12 @@ function poll() {
             console.log('update');
             console.log(result['shade']);
         }
-    })
+    });
+
+    $.ajax({
+        url: update,
+        type: "GET"
+    });
 
     get_data("panels", null, null, function () {
 

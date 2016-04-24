@@ -32,11 +32,8 @@ class Config extends CI_Controller
             $crud->set_theme('datatables');
             $crud->set_table('sensors');
             $crud->set_subject('Sensors');
-            $crud->set_relation('thermal', 'boolean', 'title');
-            $crud->set_relation('visual', 'boolean', 'title');
-            $crud->set_relation('tactile', 'boolean', 'title');
-            $crud->required_fields('sensor_name', 'reg_date', 'thermal', 'visual', 'tactile');
-            $crud->columns('sensor_name', 'reg_date', 'thermal', 'visual', 'tactile');
+            $crud->required_fields('sensor_name', 'reg_date');
+            $crud->columns('sensor_name', 'reg_date');
 
             $output = $crud->render();
 
@@ -74,9 +71,12 @@ class Config extends CI_Controller
             $crud->set_theme('datatables');
             $crud->set_table('panels');
             $crud->set_subject('Panels');
-            $crud->required_fields('panel_name', 'installed_date');
-            $crud->columns('panel_name', 'installed_date');
+            $crud->required_fields('panel_name', 'installed_date', 'heat', 'rain', 'wind');
+            $crud->columns('panel_name', 'installed_date', 'heat', 'rain', 'wind');
 
+            $crud->set_relation('heat', 'boolean', 'title');
+            $crud->set_relation('rain', 'boolean', 'title');
+            $crud->set_relation('wind', 'boolean', 'title');
             $output = $crud->render();
 
             $this->_config_output($output);

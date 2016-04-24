@@ -39,6 +39,54 @@ class environment extends CI_Controller {
         $this->_send($this->_get_conditions());
     }
 
+    private function _set_panel($type, $setting)
+    {
+        if(($type == "rain" || $type == "wind" || $type == "heat")
+            && ($setting == 1  || $setting == 2))
+        {
+            $this->load->database();
+            $query_string = "update panels set " . $type ." = " . $setting." ;";
+            $this->db->query($query_string);
+        }
+
+    }
+
+    public function update()
+    {// rain / wind / heat
+        $pws_data = $this->_get_weather_data();
+        $utci = $this->_get_conditions();
+        $wind = intval($pws_data->current_observation->wind_kph);
+        $heat = intval($pws_data->current_observation->solarradiation);
+        $rain = intval($pws_data->current_observation->precip_1hr_metric);
+        var_dump($utci);
+        if($utci['shade'] < 15) {
+            if($heat > 250) {
+                $this->_set_panel("heat", 1);
+                print("heat open");
+            }
+            if($wind > 1.5) {
+                $this->_set_panel("wind", 0);//deploy wind protection :0
+                print("wind closed");
+            }
+        }
+        if($utci['shade'] > 25) {
+            if($wind > .5) {
+                $this->_set_panel("wind", 1);//:1
+                print("wind open");
+            }
+
+            if($heat > 500) {
+                $this->_set_panel("heat", 0);//:0
+                print("heat closed");
+            }
+        }
+        if($rain > 0) {
+            $this->_set_panel("rain", 0);// :0
+            print("rain closed");
+        }
+        print("done updating");
+    }
+
     private function _get_weather_data()
     {
         $this->load->database();
