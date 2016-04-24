@@ -1,6 +1,7 @@
+var panels;
 var panelData;
 var panelLayer = mapBase.append('g');
-
+var panelColors = ['blue','red','green'];
 function buildPanelData(_panelData) {
     var hexes = [];
     _panelData.panels.forEach(function(element,index){
@@ -29,7 +30,7 @@ d3.json("assets/pretty_client/data/paneldata.json", function(json) {
     // initiate and draw map grid
     panelData = buildPanelData(points);
 
-    var panels = panelLayer.selectAll("path").data(panelData).enter().append("path");
+    panels = panelLayer.selectAll("path").data(panelData).enter().append("path");
 
     var panelAttributes = panels.attr("d",function(d){
         return drawPanel(d.panelData)
@@ -54,7 +55,10 @@ d3.json("assets/pretty_client/data/paneldata.json", function(json) {
     });
 });
 function panelClick(d, i) {
-    // d.transition().style("fill","blue");
+    get_data("panels", null, null, function (d) {
+        console.log(d);
+        tip.html('<div  class="padding-10">' + 'panel name - '+d[i].panel_name+'</div><div class="padding-10"> installed_date - ' +d[i].installed_date+'</div>').attr('class', 'd3-tip animate').show();
+    });
     /*
     ind = i + 1;
     var elmnt =panelLayer.select("path:nth-child(" + ind + ")");
@@ -82,3 +86,19 @@ function panelOut(d, i) {
             "fill", "gray").duration(300);
     }
 }
+
+setInterval(function() {
+    get_data("panels", null, null, function (d) {
+        var arr = []
+
+        panels.transition(500)
+            .style("fill",function (dd,i){
+                return panelColors[Math.floor((Math.random() * 3))];
+            });
+        //.style("fill", function(d, i) {
+        //panelColors
+        //return colorColors[activeColorScheme][colorRange1(AccumulativeHourVals[i])];
+        //});
+        // d.transition().style("fill","blue");
+    });
+}, 1000);

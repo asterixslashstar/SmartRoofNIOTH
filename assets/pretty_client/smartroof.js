@@ -1,5 +1,7 @@
 var points;
 var dt;
+
+var hexagons;
 function buildGridData(gridData) {
     var radius = gridData.size;
     xp = 50;
@@ -54,7 +56,7 @@ d3.json("assets/pretty_client/data/griddata.json", function(json) {
     // initiate and draw map grid
     dt = buildGridData(points);
 
-    var hexagons = gridLayer.selectAll("path").data(dt).enter().append("path");
+    hexagons = gridLayer.selectAll("path").data(dt).enter().append("path");
 
     var hexAttributes = hexagons.attr("d",function(d){
         return drawHexagon(d.hexagonData)
@@ -107,3 +109,5 @@ function out(d, i) {
     //gridLayer.select("path:nth-child(" + ind + ")").transition().style(
     //"fill", "white").duration(300);
 }
+
+var tip = d3.tip().attr('class', 'd3-tip').offset([ -10, 0 ]).html("");
