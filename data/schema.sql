@@ -54,6 +54,9 @@ CREATE TABLE `panels` (
   `x_points` varchar(45) NOT NULL,
   `y_points` varchar(45) NOT NULL,
   `sensor` int(11) DEFAULT NULL,
+  `heat` bit(1) NOT NULL DEFAULT b'0',
+  `rain` bit(1) NOT NULL DEFAULT b'0',
+  `wind` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `panel_name_UNIQUE` (`panel_name`)
@@ -66,7 +69,7 @@ CREATE TABLE `panels` (
 
 LOCK TABLES `panels` WRITE;
 /*!40000 ALTER TABLE `panels` DISABLE KEYS */;
-INSERT INTO `panels` VALUES (1,'panel name','2016-04-23 23:36:28','1,1','1,4',NULL);
+INSERT INTO `panels` VALUES (1,'panel name','2016-04-23 23:36:28','1,1','1,4',NULL,'','','');
 /*!40000 ALTER TABLE `panels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,9 +86,6 @@ CREATE TABLE `sensors` (
   `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `x` int(10) unsigned NOT NULL,
   `y` int(10) unsigned NOT NULL,
-  `thermal` bit(1) NOT NULL,
-  `visual` bit(1) NOT NULL,
-  `tactile` bit(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `sensor_name_UNIQUE` (`sensor_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -137,7 +137,7 @@ CREATE TABLE `tiles` (
   `title` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,6 +146,7 @@ CREATE TABLE `tiles` (
 
 LOCK TABLES `tiles` WRITE;
 /*!40000 ALTER TABLE `tiles` DISABLE KEYS */;
+INSERT INTO `tiles` VALUES (1,1,1,'name');
 /*!40000 ALTER TABLE `tiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,4 +211,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-23 23:38:21
+-- Dump completed on 2016-04-23 21:42:42
