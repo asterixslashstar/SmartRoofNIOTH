@@ -33,7 +33,7 @@ function get_data(datatype, start_date, end_date, callback) {
         type: "GET",
         success: function(result){
             for(var i = 0; i<result.length; i++) {
-                result[i]['x'] = new Date(result[i]['x'] * 1000);
+                result[i]['x'] = new Date(result[i]['x'] );
             }
             callback(result) ;
         }

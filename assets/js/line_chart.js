@@ -5,7 +5,6 @@ function clear() {
 }
 
 function render(data) {
-    console.log(data);
     var elem = document.getElementById("chart");
     var vis = d3.select("#chart"),
         WIDTH = elem.offsetWidth,
@@ -21,11 +20,17 @@ function render(data) {
         }), d3.max(data, function(d) {
             return d.x;
         })]),
-        yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(data, function(d) {
-            return d.y;
-        }), d3.max(data, function(d) {
-            return d.y;
-        })]),
+        yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([6, 30]),
+        // xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(data, function(d) {
+        //     return d.x;
+        // }), d3.max(data, function(d) {
+        //     return d.x;
+        // })]),
+        // yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(data, function(d) {
+        //     return d.y;
+        // }), d3.max(data, function(d) {
+        //     return d.y;
+        // })]),
         xAxis = d3.svg.axis()
             .scale(xRange)
             .tickSize(5)
@@ -62,27 +67,26 @@ function render(data) {
 }
 
 function draw_chart(){
-    // clear();
-    var start_date = ""; //document.getElementById('start-date').value;
-    var end_date = "";//document.getElementById('end-date').value;
-    var dataset = $('input[name="dataset"]:checked').val();
-
-    start_date.replace("-", "");
-    end_date.replace("-", "");
-
-    if(start_date) {
-        start_date += "000000";
-    }
-    if(end_date) {
-        end_date += "000000";
-    }
+    //clear();
+    // var start_date = document.getElementById('start-date');
+    // var end_date = document.getElementById('end-date');
+    // var dataset = $('input[name="dataset"]:checked').val();
+    //
+    // start_date = start_date.value.replace("-", "");
+    // end_date.replace("-", "");
+    //
+    // if(start_date) {
+    //     start_date += "000000";
+    // }
+    // if(end_date) {
+    //     end_date += "000000";
+    // }
 
 
     //replace with dataset later
     //get_data("sample", start_date, end_date, render);
     // get_utci_data("sun", start_date, end_date, render);
-    get_utci_data("smartroof", start_date, end_date, render);
+    get_utci_data("smartroof", null, null, render);
     // get_utci_data("ambient", start_date, end_date, render);
 }
-
-draw_chart();
+$(document).ready(draw_chart());
