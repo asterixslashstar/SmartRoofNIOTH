@@ -1,5 +1,4 @@
-Grocery CRUD
+SmartRoof
 =============
-Grocery CRUD is a PHP and Codeigniter Framework library that creates a full functional CRUD system without the need to customise JavaScript or CSS.
+Nordic Internet Of Things Hackathon 2016 submission by Team Bean
 
-For more information, visit http://www.grocerycrud.com

@@ -5,6 +5,7 @@ function clear() {
 }
 
 function render(data) {
+    console.log(data);
     var elem = document.getElementById("chart");
     var vis = d3.select("#chart"),
         WIDTH = elem.offsetWidth,
@@ -79,9 +80,9 @@ function draw_chart(){
 
     //replace with dataset later
     //get_data("sample", start_date, end_date, render);
-    get_utci_data("sun", start_date, end_date, render);
+    // get_utci_data("sun", start_date, end_date, render);
     get_utci_data("smartroof", start_date, end_date, render);
-    get_utci_data("ambient", start_date, end_date, render);
+    // get_utci_data("ambient", start_date, end_date, render);
 }
 
 draw_chart();
