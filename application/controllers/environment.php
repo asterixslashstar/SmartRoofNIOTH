@@ -96,7 +96,7 @@ class environment extends CI_Controller {
     private function _calculate_MRT_in_shade($Tamb, $dew_pt, $global_rad)
     {
         $T_S = $Tamb;
-        $DMRT_LW_S = -11.369 + 0.259 * $dew_pt + 0.00196 * $dew_pt ** 2  + 3;
+        $DMRT_LW_S = -11.369 + 0.259 * $dew_pt + 0.00196 * $dew_pt * 2  + 3;
         $DMRT_SW_S = 0.0464/2 * $global_rad  * 0.5;
         $MRT_S = $T_S + $DMRT_LW_S + $DMRT_SW_S;
         return $MRT_S;
@@ -105,7 +105,7 @@ class environment extends CI_Controller {
     private function _calculate_MRT_in_treeshade($Tamb, $dew_pt, $global_rad)
     {
         $T_V = $Tamb - max($Tamb - 20*.15, 0);
-        $DMRT_LW_V = -11.369 + 0.259 * $dew_pt + 0.00196 * $dew_pt ** 2 + 2;
+        $DMRT_LW_V = -11.369 + 0.259 * $dew_pt + 0.00196 * $dew_pt * 2 + 2;
         $DMRT_SW_V = 0.0464/2 * $global_rad * 0.2;
         $MRT_V = $T_V + $DMRT_LW_V + $DMRT_SW_V;
         return $MRT_V;
