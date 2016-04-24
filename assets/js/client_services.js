@@ -5,7 +5,7 @@
 
 function update_utci(data) {
     var utci = document.getElementById("utci");
-    utci.innerHTML = data['shade'];
+    utci.innerHTML = parseFloat(data['shade']).toFixed(1);
 }
 
 

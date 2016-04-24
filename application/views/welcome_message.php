@@ -3,7 +3,7 @@
     <div class="inner cover" style="margin-top: 70px;">
       <h1 class="cover-heading">See how your smart patio performs!</h1>
       <p class="lead">Take a closer look at the micro climate conditions in the structure </p>
-      <p class="lead">UTCI: <span id="utci"></span></p>
+      <p class="lead">UTCI: <span id="utci"></span> &deg;C</p>
         <div class="planViewContainer"></div>
     </div>
 

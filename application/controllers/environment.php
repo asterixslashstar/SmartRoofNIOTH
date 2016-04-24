@@ -39,6 +39,32 @@ class environment extends CI_Controller {
         $this->_send($this->_get_conditions());
     }
 
+    public function update()
+    {// rain / wind / heat
+        $pws_data = $this->_get_weather_data();
+        $utci = $this->_get_conditions();
+        if($utci->shade < 15) {
+            if($pws_data->current_observation->solarradiation > 250) {
+                //open :1
+            }
+            if($pws_data->current_observation->wind_kph > 1.5) {
+                //deploy wind protection :0
+            }
+        }
+        if($utci->shade > 25) {
+            if($pws_data->current_observation->wind_kph > .5) {
+                //:1
+            }
+
+            if($pws_data->current_observation->solarradiation > 500) {
+                //:0
+            }
+        }
+        if($pws_data->current_observation->precip_1hr_metric > 0) {
+            // :0
+        }
+    }
+
     private function _get_weather_data()
     {
         $this->load->database();
