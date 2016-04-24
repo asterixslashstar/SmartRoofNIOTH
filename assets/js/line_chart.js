@@ -6,6 +6,7 @@ function clear() {
 
 function render(data) {
     var elem = document.getElementById("chart");
+    elem.innerHTML = "";
     var vis = d3.select("#chart"),
         WIDTH = elem.offsetWidth,
         HEIGHT = elem.offsetHeight,
@@ -20,7 +21,7 @@ function render(data) {
         }), d3.max(data, function(d) {
             return d.x;
         })]),
-        yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([6, 30]),
+        yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([6, 40]),
         // xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(data, function(d) {
         //     return d.x;
         // }), d3.max(data, function(d) {
@@ -31,19 +32,19 @@ function render(data) {
         // }), d3.max(data, function(d) {
         //     return d.y;
         // })]),
-        xAxis = d3.svg.axis()
-            .scale(xRange)
-            .tickSize(5)
-            .tickSubdivide(true),
+        // xAxis = d3.svg.axis()
+        //     .scale(xRange)
+        //     .tickSize(5)
+        //     .tickSubdivide(true),
         yAxis = d3.svg.axis()
             .scale(yRange)
             .tickSize(5)
             .orient('left')
             .tickSubdivide(true);
-    vis.append('svg:g')
-        .attr('class', 'x axis')
-        .attr('transform', 'translate(0,' + (HEIGHT - MARGINS.bottom) + ')')
-        .call(xAxis);
+    // vis.append('svg:g')
+    //     .attr('class', 'x axis')
+    //     .attr('transform', 'translate(0,' + (HEIGHT - MARGINS.bottom) + ')')
+    //     .call(xAxis);
 
     vis.append('svg:g')
         .attr('class', 'y axis')
@@ -66,8 +67,8 @@ function render(data) {
         .attr('fill', 'none');
 }
 
-function draw_chart(){
-    //clear();
+function draw_chart(type){
+    // clear();
     // var start_date = document.getElementById('start-date');
     // var end_date = document.getElementById('end-date');
     // var dataset = $('input[name="dataset"]:checked').val();
@@ -85,8 +86,13 @@ function draw_chart(){
 
     //replace with dataset later
     //get_data("sample", start_date, end_date, render);
-    // get_utci_data("sun", start_date, end_date, render);
-    get_utci_data("smartroof", null, null, render);
+    //
+    if(type == "smartroof") {
+        get_utci_data("smartroof", null, null, render);
+    }
+    if(type == "sun") {
+        get_utci_data("sun", null, null, render);
+    }
     // get_utci_data("ambient", start_date, end_date, render);
 }
-$(document).ready(draw_chart());
+$(document).ready(draw_chart("smartroof"));

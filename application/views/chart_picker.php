@@ -7,6 +7,10 @@
 <!---->
 <!--            <label for="date">End Date</label>-->
 <!--            <input type="date" id="end-date" onchange="clear(); draw_chart();" value="2016-12-31">-->
+            <label for="SmartRoof">SmartRoof</label>
+            <input type="radio" id="SmartRoof" name="dataset" onclick="clear(); draw_chart('smartroof')" checked>
+            <label for="Outside">Outside</label>
+            <input type="radio" id="Outside" name="dataset" onclick="clear(); draw_chart('sun')">
 
         </form>
 </div>

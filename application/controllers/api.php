@@ -121,20 +121,23 @@ class Api extends CI_Controller {
     private  function _get_utci($type, $start, $end)
     {
         $this->load->database();
-        $query_string = 'select UNIX_TIMESTAMP(recorded_time) as x, '.$type.' as y from utci order by recorded_time';
+        $query_string = 'select UNIX_TIMESTAMP(recorded_time) as x, '.$type.' as y from utci 
+        WHERE recorded_time >= "2016-08-19 00:00:00" AND recorded_time <= "2016-08-27 10:00:00"
+        order by recorded_time; ';
 
-        if($start || $end) {
-            $query_string .= " where ";
-            if($start) {
-                $query_string .= " recorded_date >= " . $start;
-            }
-            if($end) {
-                if($start) {
-                    $query_string .= " AND ";
-                }
-                $query_string .= " recorded_date <= " . $end;
-            }
-        }
+//        if($start || $end) {
+//            $query_string .= " where ";
+//            if($start) {
+//                $query_string .= " recorded_date >= '2016-08-19 00:00:00'" ;
+//            }
+//            if($end) {
+//                if($start) {
+//                    $query_string .= " AND ";
+//                }
+//                $query_string .= " recorded_date <= 2016-08-27 10:00:00" ;
+//            }
+//        }
+//        var_dump($query_string);
         $query = $this->db->query($query_string.";");
         return $query->result_array();
     }
