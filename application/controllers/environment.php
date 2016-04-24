@@ -54,6 +54,8 @@ class environment extends CI_Controller {
     public function update()
     {// rain / wind / heat
         $pws_data = $this->_get_weather_data();
+        $sensor_data = $this->_get_sensor_data();
+        die(var_dump($sensor_data));
         $utci = $this->_get_conditions();
         $wind = intval($pws_data->current_observation->wind_kph);
         $heat = intval($pws_data->current_observation->solarradiation);
@@ -95,14 +97,23 @@ class environment extends CI_Controller {
         return json_decode($query->row()->data);
     }
 
+    private function _get_sensor_data()
+    {
+        $this->load->database();
+        $query_string = "select airtemp, humidity from smartroof.weathersensor order by recorded desc limit 1;";
+        $query = $this->db->query($query_string);
+        return $query->result_array()[0];
+    }
+
     private function _get_conditions()
     {
         $pws_data = $this->_get_weather_data();
+        $sensor_data = $this->_get_sensor_data();
 
         $location = $pws_data->current_observation->display_location->city;
-        $Tamb = $pws_data->current_observation->temp_c;
+        $Tamb = intval($sensor_data['airtemp']) ? intval($sensor_data['airtemp']) : $pws_data->current_observation->temp_c;
         $dew_pt = $pws_data->current_observation->dewpoint_c;
-        $relhum = $pws_data->current_observation->relative_humidity;
+        $relhum = intval($sensor_data['humidity']) ? intval($sensor_data['humidity']) : $pws_data->current_observation->relative_humidity;
         $solarRadiation = $pws_data->current_observation->solarradiation;
         $wind = $pws_data->current_observation->wind_kph;
         $wind_str = $pws_data->current_observation->wind_kph;
