@@ -17,7 +17,34 @@ function get_data(datatype, start_date, end_date, callback) {
         || datatype == "sensors"
         || datatype == "settings"
         || datatype == "tiles"
+        || datatype == "utci"
         || datatype == "sample") {
+       url += datatype;
+        if(start_date) {
+            url += "/" + start_date;
+            if(end_date) {
+                url += "/" + end_date;
+            }
+        }
+    }
+    console.log ("fetch url: " + url);
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function(result){
+            for(var i = 0; i<result.length; i++) {
+                result[i]['x'] = new Date(result[i]['x'] * 1000);
+            }
+            callback(result) ;
+        }
+    })
+}
+
+function get_utci_data(datatype, start_date, end_date, callback) {
+    var url = endpoint + "utci/";
+    if (datatype == "sun"
+        || datatype == "smartroof"
+        || datatype == "ambient") {
        url += datatype;
         if(start_date) {
             url += "/" + start_date;
@@ -34,6 +61,11 @@ function get_data(datatype, start_date, end_date, callback) {
             callback(result) ;
         }
     })
+}
+
+
+function poll() {
+
 }
 
 /* sample usage

@@ -107,6 +107,37 @@ class Api extends CI_Controller {
         $query = $this->db->query('SELECT * FROM settings');
         return $query->result_array();
     }
+
+
+    public function utci($type, $start = null, $end = null)
+    {
+        if($type == "sun"
+            || $type == "smartroof"
+            || $type == "ambient") {
+            $this->_send($this->_get_utci($type, (float) $start, (float) $end));
+        }
+    }
+
+    private  function _get_utci($type, $start, $end)
+    {
+        $this->load->database();
+        $query_string = 'select UNIX_TIMESTAMP(recorded_time) as x, '.$type.' as y from utci order by recorded_time';
+
+        if($start || $end) {
+            $query_string .= " where ";
+            if($start) {
+                $query_string .= " recorded_date >= " . $start;
+            }
+            if($end) {
+                if($start) {
+                    $query_string .= " AND ";
+                }
+                $query_string .= " recorded_date <= " . $end;
+            }
+        }
+        $query = $this->db->query($query_string.";");
+        return $query->result_array();
+    }
 }
 
 /* End of file welcome.php */

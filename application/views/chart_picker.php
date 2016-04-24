@@ -3,16 +3,11 @@
         <h1 class="cover-heading">Chart</h1>
         <form>
             <label for="date">Start Date</label>
-            <input type="datetime" id="start-date">
+            <input type="date" id="start-date" onchange="clear(); draw_chart();">
 
             <label for="date">End Date</label>
-            <input type="datetime" id="end-date">
+            <input type="date" id="end-date" onchange="clear(); draw_chart();">
 
-            <label for="set1">Panels</label>
-            <input type="radio" id="panels" name="dataset" value="panels" onclick="draw_chart()">
-
-            <label for="set2">Sensors</label>
-            <input type="radio" id="dataset" name="dataset" value="sensors" onclick="draw_chart()">
         </form>
 </div>
             <svg id="chart" class="chart"></svg>

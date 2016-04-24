@@ -1,9 +1,11 @@
 
-
+function clear() {
+    var elem = document.getElementById("chart");
+    elem.innerHTML = "";
+}
 
 function render(data) {
     var elem = document.getElementById("chart");
-    elem.innerHTML = "";
     var vis = d3.select("#chart"),
         WIDTH = elem.offsetWidth,
         HEIGHT = elem.offsetHeight,
@@ -59,8 +61,9 @@ function render(data) {
 }
 
 function draw_chart(){
-    var start_date = document.getElementById('start-date').value;
-    var end_date = document.getElementById('end-date').value;
+    // clear();
+    var start_date = ""; //document.getElementById('start-date').value;
+    var end_date = "";//document.getElementById('end-date').value;
     var dataset = $('input[name="dataset"]:checked').val();
 
     start_date.replace("-", "");
@@ -75,5 +78,10 @@ function draw_chart(){
 
 
     //replace with dataset later
-    get_data("sample", start_date, end_date, render);
+    //get_data("sample", start_date, end_date, render);
+    get_utci_data("sun", start_date, end_date, render);
+    get_utci_data("smartroof", start_date, end_date, render);
+    get_utci_data("ambient", start_date, end_date, render);
 }
+
+draw_chart();
