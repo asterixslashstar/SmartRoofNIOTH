@@ -27,6 +27,11 @@ function poll() {
         type: "GET"
     });
 
+    $.ajax({
+        url: "http://localhost/SmartRoofNIOTH/index.php/sensors/fetch",
+        type: "GET"
+    });
+
     get_data("panels", null, null, function () {
 
         //call panel transition function here
