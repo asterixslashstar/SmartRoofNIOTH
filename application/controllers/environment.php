@@ -58,7 +58,7 @@ class environment extends CI_Controller {
         die(var_dump($sensor_data));
         $utci = $this->_get_conditions();
         $wind = intval($pws_data->current_observation->wind_kph);
-        $heat = intval($pws_data->current_observation->solarradiation);
+        $heat = intval($sensor_data['airtemp']) ? intval($sensor_data['airtemp']) : ($pws_data->current_observation->solarradiation);
         $rain = intval($pws_data->current_observation->precip_1hr_metric);
         var_dump($utci);
         if($utci['shade'] < 15) {
