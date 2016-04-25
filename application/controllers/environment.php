@@ -11,7 +11,7 @@ class environment extends CI_Controller {
     {
         $this->load->database();
         $mysqli = new mysqli("localhost", "smartroof", "smartroof", "smartroof");
-        $url = 'http://api.wunderground.com/api/14d8de9b33e35504/conditions/q/pws:IMILANO61.json';
+        $url = 'http://api.wunderground.com/api/14d8de9b33e35504/conditions/q/pws:ISKNELNM6.json';
 
         $string = file_get_contents($url);
         $s_string = $mysqli->real_escape_string($string);
@@ -100,7 +100,7 @@ class environment extends CI_Controller {
     private function _get_sensor_data()
     {
         $this->load->database();
-        $query_string = "select airtemp, humidity from smartroof.weathersensor order by recorded desc limit 1;";
+        $query_string = "select airtemp, humidity from smartroof.weathersensor order by id desc limit 1;";
         $query = $this->db->query($query_string);
         return $query->result_array()[0];
     }
